@@ -2,6 +2,8 @@ const router = require('express').Router();
 const userController = require('../controllers/userController');
 const jwt = require('../utils/jwt');
 
-router.get('/:id', jwt.protect, userController.getUser);
+router.route('/:id')
+    .get(userController.getUser)
+    .patch(userController.updateUser);
 
 module.exports = router;
